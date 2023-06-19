@@ -25,6 +25,12 @@ namespace Entity {
             this.age = age;
         }
 
+        public CharacterType Type { get => type; }
+        public string Name { get => name; }
+        public string Nickname { get => nickname; }
+        public DateTime BirthDate { get => birthDate; }
+        public int Age { get => age; }
+
         public float Speed { get; set; }
         public float Dexterity { get; set; }
         public float Strength { get; set; }
