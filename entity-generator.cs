@@ -18,9 +18,10 @@ namespace Entity {
             }
             CharacterType type = (CharacterType)tryType;
             DateTime birthDate = start.AddDays(random.Next(range));
-            string name = names[random.Next(names.Length)];
-            string nickname = nicknames[random.Next(nicknames.Length)];
             int age = DateTime.Today.Year - birthDate.Year;
+            int nameIndex = random.Next(names.Length);
+            string name = names[nameIndex];
+            string nickname = nicknames[nameIndex];
             return new Character(type, name, nickname, birthDate, age) {
                 Speed = random.Next(1, 10),
                 Dexterity = random.Next(1, 5),
