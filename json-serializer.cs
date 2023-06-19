@@ -20,17 +20,17 @@ namespace Serializer {
             List<Character>? characters = JsonSerializer.Deserialize<List<Character>>(serializedCharacters);
             if(characters != null) {
                 foreach(Character character in characters) {
-                    Console.WriteLine("Nombre: " + character.Name);
+                    Console.WriteLine("\nNombre: " + character.Name);
                     Console.WriteLine("Apodo: " + character.Nickname);
                     Console.WriteLine("Tipo: " + Enum.GetName(character.Type));
-                    Console.WriteLine("Fecha de nacimiento: " + character.BirthDate);
+                    Console.WriteLine("Fecha de nacimiento: " + character.BirthDate.ToString("dd/MM/yyyy"));
                     Console.WriteLine("Edad: " + character.Age);
                     Console.WriteLine("Velocidad: " + character.Speed);
                     Console.WriteLine("Destreza: " + character.Dexterity);
                     Console.WriteLine("Fuerza: " + character.Strength);
                     Console.WriteLine("Nivel: " + character.Level);
                     Console.WriteLine("Armadura: " + character.Armor);
-                    Console.WriteLine("Vida: " + character.Health);
+                    Console.WriteLine("Vida: " + character.Health + "\n");
                 }
             }
         }
