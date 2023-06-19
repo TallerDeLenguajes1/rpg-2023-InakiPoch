@@ -1,1 +1,41 @@
-[{"Type":1,"Name":"Personaje3","Nickname":"Personaje3","BirthDate":"1976-05-30T00:00:00","Age":47,"Speed":5,"Dexterity":3,"Strength":8,"Level":6,"Armor":9,"Health":100},{"Type":1,"Name":"Personaje2","Nickname":"Personaje2","BirthDate":"1794-02-07T00:00:00","Age":229,"Speed":2,"Dexterity":3,"Strength":8,"Level":7,"Armor":8,"Health":100},{"Type":1,"Name":"Personaje1","Nickname":"Personaje1","BirthDate":"2010-07-19T00:00:00","Age":13,"Speed":6,"Dexterity":2,"Strength":4,"Level":8,"Armor":2,"Health":100}]
+[
+  {
+    "Type": 2,
+    "Name": "Personaje1",
+    "Nickname": "Personaje2",
+    "BirthDate": "1908-02-20T00:00:00",
+    "Age": 115,
+    "Speed": 3,
+    "Dexterity": 3,
+    "Strength": 1,
+    "Level": 5,
+    "Armor": 4,
+    "Health": 100
+  },
+  {
+    "Type": 0,
+    "Name": "Personaje2",
+    "Nickname": "Personaje1",
+    "BirthDate": "1775-09-14T00:00:00",
+    "Age": 248,
+    "Speed": 5,
+    "Dexterity": 1,
+    "Strength": 2,
+    "Level": 4,
+    "Armor": 5,
+    "Health": 100
+  },
+  {
+    "Type": 2,
+    "Name": "Personaje1",
+    "Nickname": "Personaje2",
+    "BirthDate": "1882-12-06T00:00:00",
+    "Age": 141,
+    "Speed": 7,
+    "Dexterity": 2,
+    "Strength": 7,
+    "Level": 9,
+    "Armor": 2,
+    "Health": 100
+  }
+]

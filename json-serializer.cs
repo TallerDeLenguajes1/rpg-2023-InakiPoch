@@ -7,14 +7,14 @@ namespace Serializer {
         string? charactersFileName;
 
         public void CreateCharactersFile(List<Character> entities) { 
-            serializedCharacters =  JsonSerializer.Serialize(entities);
+            serializedCharacters =  JsonSerializer.Serialize(entities, new JsonSerializerOptions { WriteIndented = true });
             charactersFileName = "characters.json";
             File.WriteAllText(charactersFileName, serializedCharacters);
         }
 
         public void ReadCharacters() {
             if(serializedCharacters == null) {
-                Console.WriteLine("\nNombre de archivo no previsto\n");
+                Console.WriteLine("\nNo se encontraron personajes\n");
                 return;
             }
             List<Character>? characters = JsonSerializer.Deserialize<List<Character>>(serializedCharacters);
