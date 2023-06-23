@@ -6,9 +6,9 @@ namespace Serializer {
         string? serializedCharacters;
         string? charactersFileName;
 
-        public void CreateCharactersFile(List<Character> entities) { 
+        public void CreateEnemiesFile(List<Character> entities) { 
             serializedCharacters =  JsonSerializer.Serialize(entities, new JsonSerializerOptions { WriteIndented = true });
-            charactersFileName = "characters.json";
+            charactersFileName = "json-files/enemies.json";
             File.WriteAllText(charactersFileName, serializedCharacters);
         }
 
@@ -34,5 +34,7 @@ namespace Serializer {
                 }
             }
         }
+
+        public string? CharactersFileName { get => charactersFileName; }
     }
 }
