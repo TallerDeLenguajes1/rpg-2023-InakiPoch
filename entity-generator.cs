@@ -6,7 +6,7 @@ namespace Entity {
         static int range = (DateTime.Today - start).Days;
         static Random random = new Random();
         static Array differentTypes = Enum.GetValues<CharacterType>();
-        static Stats stats;
+        static Stats? stats = new Stats();
         
         public Character? GenerateEnemies() {
             if (differentTypes == null) {
@@ -34,21 +34,24 @@ namespace Entity {
         }
 
         public Character? CreateMainCharacter(CharacterType type, string name, string nickname, DateTime birthDate, int age) {
-            int newSpeed = stats.SetSpeed(type);
-            int newDexterity = stats.SetDexterity(type);
-            int newStrength = stats.SetStrength(type);
-            int newArmor = stats.SetArmor(type);
-            if(newSpeed == 0 && newDexterity == 0 && newStrength == 0 && newArmor == 0) {
-                return null;
+            if(!(stats == null)) {
+                int newSpeed = stats.SetSpeed(type);
+                int newDexterity = stats.SetDexterity(type);
+                int newStrength = stats.SetStrength(type);
+                int newArmor = stats.SetArmor(type);
+                if(newSpeed == 0 && newDexterity == 0 && newStrength == 0 && newArmor == 0) {
+                    return null;
+                }
+                return new Character(type, name, nickname, birthDate, age) {
+                    Speed = newSpeed,
+                    Dexterity = newDexterity,
+                    Strength = newStrength,
+                    Level = 1,
+                    Armor = newArmor,
+                    Health = 100
+                };
             }
-            return new Character(type, name, nickname, birthDate, age) {
-                Speed = newSpeed,
-                Dexterity = newDexterity,
-                Strength = newStrength,
-                Level = 1,
-                Armor = newArmor,
-                Health = 100
-            };
+            return null;
         }
     }
 }
