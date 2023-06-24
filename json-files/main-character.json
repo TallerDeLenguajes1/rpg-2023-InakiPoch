@@ -1,15 +1,13 @@
-[
-  {
-    "Type": 1,
-    "Name": "Hola",
-    "Nickname": "Mundo",
-    "BirthDate": "2000-01-21T00:00:00",
-    "Age": 23,
-    "Speed": 5,
-    "Dexterity": 1,
-    "Strength": 3,
-    "Level": 1,
-    "Armor": 2,
-    "Health": 100
-  }
-]
+{
+  "Type": 2,
+  "Name": "Hola",
+  "Nickname": "Mundo",
+  "BirthDate": "1978-01-23T00:00:00",
+  "Age": 45,
+  "Speed": 9,
+  "Dexterity": 5,
+  "Strength": 5,
+  "Level": 1,
+  "Armor": 7,
+  "Health": 100
+}

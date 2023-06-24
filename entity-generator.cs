@@ -7,25 +7,25 @@ namespace Entity {
         static DateTime start = new DateTime(1723, 1, 1);
         static int range = (DateTime.Today - start).Days;
         static Random random = new Random();
-        static Array differentTypes = Enum.GetValues<CharacterType>();
+        static Array differentEnemyTypes = Enum.GetValues<EnemyType>();
         static Stats? stats = new Stats();
         
-        public Character? GenerateEnemies() {
-            if (differentTypes == null) {
+        public Character<EnemyType>? GenerateEnemies() {
+            if (differentEnemyTypes == null) {
                 return null;
             }
-            int index = random.Next(differentTypes.Length);
-            var tryType = differentTypes.GetValue(index); 
+            int index = random.Next(differentEnemyTypes.Length);
+            var tryType = differentEnemyTypes.GetValue(index); 
             if(tryType == null) {
                 return null;
             }
-            CharacterType type = (CharacterType)tryType;
+            EnemyType type = (EnemyType)tryType;
             DateTime birthDate = start.AddDays(random.Next(range));
             int age = DateTime.Today.Year - birthDate.Year;
             int nameIndex = random.Next(names.Length);
             string name = names[nameIndex];
             string nickname = nicknames[nameIndex];
-            return new Character(type, name, nickname, birthDate, age) {
+            return new Character<EnemyType>(type, name, nickname, birthDate, age) {
                 Speed = random.Next(1, 10),
                 Dexterity = random.Next(1, 5),
                 Strength = random.Next(1, 10),
@@ -35,7 +35,7 @@ namespace Entity {
             };
         }
 
-        public Character? CreateMainCharacter(CharacterType type, string name, string nickname, DateTime birthDate, int age) {
+        public Character<CharacterType>? CreateMainCharacter(CharacterType type, string name, string nickname, DateTime birthDate, int age) {
             if(!(stats == null)) {
                 int newSpeed = stats.SetSpeed(type);
                 int newDexterity = stats.SetDexterity(type);
@@ -46,7 +46,7 @@ namespace Entity {
                 }
                 birthDate = birthDate.AddYears(DateTime.Today.Year - birthDate.Year);
                 birthDate = birthDate.AddYears(-age);
-                return new Character(type, name, nickname, birthDate, age) {
+                return new Character<CharacterType>(type, name, nickname, birthDate, age) {
                     Speed = newSpeed,
                     Dexterity = newDexterity,
                     Strength = newStrength,
