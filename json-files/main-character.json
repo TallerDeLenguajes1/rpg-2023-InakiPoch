@@ -1,13 +1,13 @@
 {
-  "Type": 2,
+  "Type": 3,
   "Name": "Hola",
   "Nickname": "Mundo",
-  "BirthDate": "1978-01-23T00:00:00",
-  "Age": 45,
-  "Speed": 9,
-  "Dexterity": 5,
-  "Strength": 5,
+  "BirthDate": "1980-01-23T00:00:00",
+  "Age": 43,
+  "Speed": 7,
+  "Dexterity": 3,
+  "Strength": 10,
   "Level": 1,
-  "Armor": 7,
+  "Armor": 9,
   "Health": 100
 }

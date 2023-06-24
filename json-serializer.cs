@@ -28,18 +28,18 @@ namespace Serializer {
             if(entityType == typeof(CharacterType)) {
                 Character<CharacterType>? character = JsonSerializer.Deserialize<Character<CharacterType>>(serializedEntity);
                 if(character != null) {
-                    Console.WriteLine("╔══════════════════════════════════════════════════════════╗");
-                    Console.WriteLine("      Nombre: " + character.Name);
-                    Console.WriteLine("      Apodo: " + character.Nickname);
-                    Console.WriteLine("      Tipo: " + Enum.GetName(typeof(CharacterType), character.Type));
-                    Console.WriteLine("      Fecha de nacimiento: " + character.BirthDate.ToString("dd/MM/yyyy"));
-                    Console.WriteLine("      Edad: " + character.Age);
-                    Console.WriteLine("      Velocidad: " + character.Speed);
-                    Console.WriteLine("      Destreza: " + character.Dexterity);
-                    Console.WriteLine("      Fuerza: " + character.Strength);
-                    Console.WriteLine("      Nivel: " + character.Level);
-                    Console.WriteLine("      Armadura: " + character.Armor);
-                    Console.WriteLine("      Vida: " + character.Health);
+                    Console.WriteLine("\n╔══════════════════════════════════════════════════════════╗");
+                    Console.WriteLine("      𝐍𝐎𝐌𝐁𝐑𝐄: " + character.Name);
+                    Console.WriteLine("      𝐀𝐏𝐎𝐃𝐎: " + character.Nickname);
+                    Console.WriteLine("      𝐓𝐈𝐏𝐎: " + Enum.GetName(typeof(CharacterType), character.Type));
+                    Console.WriteLine("      𝐅𝐄𝐂𝐇𝐀 𝐃𝐄 𝐍𝐀𝐂𝐈𝐌𝐈𝐄𝐍𝐓𝐎: " + character.BirthDate.ToString("dd/MM/yyyy"));
+                    Console.WriteLine("      𝐄𝐃𝐀𝐃: " + character.Age);
+                    Console.WriteLine("      𝐕𝐄𝐋𝐎𝐂𝐈𝐃𝐀𝐃: " + character.Speed);
+                    Console.WriteLine("      𝐃𝐄𝐒𝐓𝐑𝐄𝐙𝐀: " + character.Dexterity);
+                    Console.WriteLine("      𝐅𝐔𝐄𝐑𝐙𝐀: " + character.Strength);
+                    Console.WriteLine("      𝐍𝐈𝐕𝐄𝐋: " + character.Level);
+                    Console.WriteLine("      𝐀𝐑𝐌𝐀𝐃𝐔𝐑𝐀: " + character.Armor);
+                    Console.WriteLine("      𝐕𝐈𝐃𝐀: " + character.Health);
                     Console.WriteLine("╚══════════════════════════════════════════════════════════╝");
                 }
             }

@@ -21,13 +21,15 @@ namespace GameManager {
             DateTime validBirthDate;
             screenHandler.TitleScreen();
             screenHandler.SelectClass();
+            Console.Write("\nSeleccionar clase: ");
             string? selectedClass = Console.ReadLine();
             while(!int.TryParse(selectedClass, out validClass) || validClass < (int)classes[0] || validClass > classes.Length) {
                 Console.Write("\nNo se detecto una opcion valida. Ingresar la clase que desea jugar\n");
                 selectedClass = Console.ReadLine();
             }
             CharacterType type = (CharacterType)validClass;
-            Console.Write("Nombre: ");
+            Console.WriteLine("\n𝐂𝐀𝐑𝐆𝐀 𝐃𝐄 𝐃𝐀𝐓𝐎𝐒");
+            Console.Write("\nNombre: ");
             string? name = Console.ReadLine();
             while(name == string.Empty || name == null) {
                 Console.Write("\nIngresar un nombre valido\n");
