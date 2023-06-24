@@ -59,9 +59,9 @@ namespace GameManager {
                 System.Environment.Exit(1);
             }
             if(!File.Exists(entitiesSerializer.CharacterFileName)) {
-                entitiesSerializer.CreateCharacterFile(mainCharacter);
+                entitiesSerializer.CreateCharacterFile(new List<Character<CharacterType>> { mainCharacter } );
             }
-            entitiesSerializer.ReadFile(entitiesSerializer.SerializedCharacter, typeof(CharacterType));
+            entitiesSerializer.ReadFile<CharacterType>(entitiesSerializer.SerializedCharacter);
         }
 
         private void CreateEnemies() {
@@ -75,7 +75,7 @@ namespace GameManager {
                 }
                 entitiesSerializer.CreateEnemiesFile(enemiesList);
             }
-            entitiesSerializer.ReadFile(entitiesSerializer.SerializedEnemies, typeof(EnemyType));
+            entitiesSerializer.ReadFile<EnemyType>(entitiesSerializer.SerializedEnemies);
         }
     }
 }
