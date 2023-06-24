@@ -44,6 +44,8 @@ namespace Entity {
                 if(newSpeed == 0 && newDexterity == 0 && newStrength == 0 && newArmor == 0) {
                     return null;
                 }
+                birthDate = birthDate.AddYears(DateTime.Today.Year - birthDate.Year);
+                birthDate = birthDate.AddYears(-age);
                 return new Character(type, name, nickname, birthDate, age) {
                     Speed = newSpeed,
                     Dexterity = newDexterity,

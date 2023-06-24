@@ -12,18 +12,7 @@ namespace GameManager {
 
         public void StartGame() {
             HandleGameStart();
-            // const int MAX_CHARACTERS = 10;
-            // if(!File.Exists(entitySerializer.CharactersFileName)) {
-            //     for (int i = 0; i < MAX_CHARACTERS; i++) {
-            //         Character? randomEnemy = entitiesGenerator.GenerateEnemies();
-            //         if (randomEnemy != null) {
-            //             Character character = randomEnemy;
-            //             enemiesList.Add(character);
-            //         }
-            //     }
-            //     entitySerializer.CreateEnemiesFile(enemiesList);
-            // }
-            // entitySerializer.ReadCharacters();
+
         }
 
         private void HandleGameStart() {
@@ -56,9 +45,9 @@ namespace GameManager {
                 Console.Write("\nIngresar una fecha de nacimiento valida\n");
                 birthDate = Console.ReadLine();
             }
-            Console.Write("Edad: ");
+            Console.Write("Edad (Hasta 300): ");
             string? age = Console.ReadLine();
-            while(!int.TryParse(age, out validAge)) {
+            while(!int.TryParse(age, out validAge) || validAge > 300 || validAge < 0) {
                 Console.Write("\nIngresar una edad valida\n");
                 selectedClass = Console.ReadLine();
             }
@@ -71,6 +60,21 @@ namespace GameManager {
                 entitiesSerializer.CreateCharacterFile(new List<Character> { mainCharacter });
             }
             entitiesSerializer.ReadFile(entitiesSerializer.SerializedCharacter);
+        }
+
+        private void CreateEnemies() {
+            const int MAX_CHARACTERS = 10;
+            if(!File.Exists(entitiesSerializer.EnemiesFileName)) {
+                for (int i = 0; i < MAX_CHARACTERS; i++) {
+                    Character? randomEnemy = entitiesGenerator.GenerateEnemies();
+                    if (randomEnemy != null) {
+                        Character character = randomEnemy;
+                        enemiesList.Add(character);
+                    }
+                }
+                entitiesSerializer.CreateEnemiesFile(enemiesList);
+            }
+            entitiesSerializer.ReadFile(entitiesSerializer.SerializedEnemies);
         }
     }
 }
