@@ -1,3 +1,5 @@
+using ExceptionsHandler;
+
 namespace Entity {
     public class EntityGenerator {
         static string[] names = {"Personaje1", "Personaje2", "Personaje3"}; 

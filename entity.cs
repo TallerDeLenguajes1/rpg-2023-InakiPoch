@@ -1,4 +1,4 @@
-public enum CharacterType { Confessor, Samurai, Warrior }
+public enum CharacterType { Confessor = 1, Samurai, Warrior }
 
 interface IStats {
     float Speed { get; set; }
