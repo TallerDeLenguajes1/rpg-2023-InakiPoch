@@ -11,7 +11,7 @@ namespace Entity {
         static Stats? stats = new Stats();
         
         public Character<EnemyType>? GenerateEnemies() {
-            if (differentEnemyTypes == null) {
+            if (differentEnemyTypes == null || stats == null) {
                 return null;
             }
             int index = random.Next(differentEnemyTypes.Length);
@@ -23,16 +23,15 @@ namespace Entity {
             DateTime birthDate = start.AddDays(random.Next(range));
             int age = DateTime.Today.Year - birthDate.Year;
             int nameIndex = (int)type;
-            int calculatedHealth = DefineHealth(type);
             string name = names[nameIndex];
             string nickname = nicknames[nameIndex];
             return new Character<EnemyType>(type, name, nickname, birthDate, age) {
-                Speed = random.Next(1, 10),
-                Dexterity = random.Next(1, 5),
-                Strength = random.Next(1, 10),
-                Level = random.Next(1, 10),
-                Armor = random.Next(1, 10),
-                Health = calculatedHealth
+                Speed = stats.DefineEnemySpeed(type),
+                Dexterity = stats.DefineEnemyDex(type),
+                Strength = stats.DefineEnemyStrength(type),
+                Level = stats.DefineEnemyLevel(type),
+                Armor = stats.DefineEnemyArmor(type),
+                Health = stats.DefineEnemyHealth(type)
             };
         }
 
@@ -57,15 +56,6 @@ namespace Entity {
                 };
             }
             return null;
-        }
-
-        private int DefineHealth(EnemyType type) {
-            switch(type) {
-                case EnemyType.Regular: return 10;
-                case EnemyType.Special: return 35;
-                case EnemyType.Rare: return 50;
-                default: return 0;
-            }
         }
     }
 }

@@ -3,7 +3,7 @@ using ScreenManager;
 
 namespace GameManager {
     public class Combat {
-        const int ATTACK_ADJUST = 500; 
+        const int ATTACK_ADJUST = 300; 
         const int MAX_CRITICAL_STRIKE = 100;
         float attackPower;
         int criticalStrike;
@@ -21,12 +21,12 @@ namespace GameManager {
             }
         }
 
-        public float CalculateDamage(float dex, float strength, int level) { 
+        public int CalculateDamage(int dex, int strength, int level) { 
             attackPower = dex * strength * level;
             criticalStrike = (new Random()).Next(MAX_CRITICAL_STRIKE);
-            return ((attackPower * criticalStrike) - defensePower) / ATTACK_ADJUST; 
+            return (int)((attackPower * criticalStrike) - defensePower) / ATTACK_ADJUST; 
         }
 
-        public void CalculateDeffense(float armor, float speed) { defensePower = armor * speed; }
+        public void CalculateDeffense(int armor, int speed) { defensePower = armor * speed; }
     }
 }

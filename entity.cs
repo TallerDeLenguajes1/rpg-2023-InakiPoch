@@ -1,11 +1,11 @@
 public enum CharacterType { Warrior = 1, Confessor, Samurai }
 public enum EnemyType { Regular, Special, Rare }
 interface IStats {
-    float Speed { get; set; }
-    float Dexterity { get; set; }
-    float Strength { get; set; }
+    int Speed { get; set; }
+    int Dexterity { get; set; }
+    int Strength { get; set; }
     int Level { get; set; }
-    float Armor { get; set; }
+    int Armor { get; set; }
     int Health { get; set; }
 }
 
@@ -31,11 +31,11 @@ namespace Entity {
         public DateTime BirthDate { get => birthDate; }
         public int Age { get => age; }
 
-        public float Speed { get; set; }
-        public float Dexterity { get; set; }
-        public float Strength { get; set; }
+        public int Speed { get; set; }
+        public int Dexterity { get; set; }
+        public int Strength { get; set; }
         public int Level { get; set; }
-        public float Armor { get; set; }
+        public int Armor { get; set; }
         public int Health { get; set; }
     }
 }
