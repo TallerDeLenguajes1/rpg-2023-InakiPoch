@@ -2,8 +2,8 @@ using ExceptionsHandler;
 
 namespace Entity {
     public class EntityGenerator {
-        static string[] names = {"Personaje1", "Personaje2", "Personaje3"}; 
-        static string[] nicknames = {"Personaje1", "Personaje2", "Personaje3"};
+        static string[] names = {"Soldier of Godrick", "Vanished Knight", "Omen"}; 
+        static string[] nicknames = {"Godrick's Soldier", "Knight", "Omen"};
         static DateTime start = new DateTime(1723, 1, 1);
         static int range = (DateTime.Today - start).Days;
         static Random random = new Random();
@@ -22,7 +22,8 @@ namespace Entity {
             EnemyType type = (EnemyType)tryType;
             DateTime birthDate = start.AddDays(random.Next(range));
             int age = DateTime.Today.Year - birthDate.Year;
-            int nameIndex = random.Next(names.Length);
+            int nameIndex = (int)type;
+            int calculatedHealth = DefineHealth(type);
             string name = names[nameIndex];
             string nickname = nicknames[nameIndex];
             return new Character<EnemyType>(type, name, nickname, birthDate, age) {
@@ -31,7 +32,7 @@ namespace Entity {
                 Strength = random.Next(1, 10),
                 Level = random.Next(1, 10),
                 Armor = random.Next(1, 10),
-                Health = 100
+                Health = calculatedHealth
             };
         }
 
@@ -56,6 +57,15 @@ namespace Entity {
                 };
             }
             return null;
+        }
+
+        private int DefineHealth(EnemyType type) {
+            switch(type) {
+                case EnemyType.Regular: return 10;
+                case EnemyType.Special: return 35;
+                case EnemyType.Rare: return 50;
+                default: return 0;
+            }
         }
     }
 }

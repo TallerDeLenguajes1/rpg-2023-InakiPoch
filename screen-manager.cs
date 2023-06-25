@@ -23,5 +23,6 @@ namespace ScreenManager {
         
         public void TitleScreen() { readfile(titleScreen); }
         public void SelectClass() { readfile(classesScreen); }
+        public void CombatScreen(string currentEnemy) { readfile(folderPath + currentEnemy); }
     }
 }

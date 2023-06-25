@@ -2,9 +2,9 @@ namespace Entity {
     public class Stats {
         public int SetSpeed(CharacterType type) {
             switch(type) {
-                case CharacterType.Confessor: return 5;
-                case CharacterType.Samurai: return 9;
-                case CharacterType.Warrior: return 7;
+                case CharacterType.Confessor: return 9;
+                case CharacterType.Samurai: return 7;
+                case CharacterType.Warrior: return 5;
                 default: return 0;
             }
         }
