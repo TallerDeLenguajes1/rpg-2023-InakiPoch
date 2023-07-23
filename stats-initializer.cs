@@ -11,7 +11,7 @@ namespace Entity {
 
         public int SetDexterity(CharacterType type) {
             switch(type) {
-                case CharacterType.Confessor: return 1;
+                case CharacterType.Confessor: return 2;
                 case CharacterType.Samurai: return 5;
                 case CharacterType.Warrior: return 3;
                 default: return 0;
@@ -65,27 +65,27 @@ namespace Entity {
 
         public int DefineEnemyStrength(EnemyType type) {
             switch(type) {
-                case EnemyType.Regular: return 4;
-                case EnemyType.Special: return 6;
-                case EnemyType.Rare: return 9;
+                case EnemyType.Regular: return 3;
+                case EnemyType.Special: return 5;
+                case EnemyType.Rare: return 7;
                 default: return 0;
             }
         }
 
         public int DefineEnemyArmor(EnemyType type) {
             switch(type) {
-                case EnemyType.Regular: return 4;
-                case EnemyType.Special: return 7;
-                case EnemyType.Rare: return 8;
+                case EnemyType.Regular: return 2;
+                case EnemyType.Special: return 4;
+                case EnemyType.Rare: return 6;
                 default: return 0;
             }
         }
 
         public int DefineEnemyLevel(EnemyType type) {
             switch(type) {
-                case EnemyType.Regular: return 2;
-                case EnemyType.Special: return 4;
-                case EnemyType.Rare: return 6;
+                case EnemyType.Regular: return 1;
+                case EnemyType.Special: return 2;
+                case EnemyType.Rare: return 3;
                 default: return 0;
             }    
         }

@@ -12,6 +12,7 @@ namespace GameManager {
         static Screen screenHandler = new Screen();
         static int playerXP;
         static int maxXP;
+        static int maxPlayerHP = 100;
         static bool playerDefeated;
         static bool isDefending;
         static bool inCombat;
@@ -19,7 +20,7 @@ namespace GameManager {
 
 
         public Game() {
-            CreateEnemies();
+            createEnemies();
             playerDefeated = false;
             isDefending = false;
             inCombat = false;
@@ -27,7 +28,7 @@ namespace GameManager {
             maxXP = 50;
         }
         public void StartGame() {
-            HandleGameStart();
+            handleGameStart();
             Console.ReadKey();
             while(!playerDefeated && !(mainCharacter == null) && enemiesList.Any()) {
                 Character<EnemyType> currentEnemy = enemiesList[(new Random()).Next(enemiesList.Count)];
@@ -40,7 +41,7 @@ namespace GameManager {
                 Console.WriteLine("\n╚══════════════════════════════════════════════════════════╝");
                 while(inCombat) {
                     if(!isDefending) {
-                        Console.WriteLine("\n\n\n════════════════════════════𝐓𝐄 𝐓𝐎𝐂𝐀: 𝐀𝐓𝐀𝐂𝐀𝐑════════════════════════════");
+                        Console.WriteLine("\n\n\n\n════════════════════════════𝐓𝐄 𝐓𝐎𝐂𝐀: 𝐀𝐓𝐀𝐂𝐀𝐑════════════════════════════");
                         Console.WriteLine("\n                         𝐏𝐑𝐄𝐒𝐈𝐎𝐍𝐀 𝐏𝐀𝐑𝐀 𝐀𝐓𝐀𝐂𝐀𝐑!\n");
                         Console.ReadKey();
                         combat.CalculateDeffense(currentEnemy.Armor, currentEnemy.Speed);
@@ -49,21 +50,21 @@ namespace GameManager {
                         if(currentEnemy.Health < 0) {
                             currentEnemy.Health = 0;
                         }
-                        Console.WriteLine("\n      ╔══════════════════════════════════════════════════════════╗");
+                        Console.WriteLine("\n\n      ╔══════════════════════════════════════════════════════════╗");
                         Console.WriteLine("                          Danio Otorgado: " + damageDealt + "            ");
                         Console.WriteLine("                         Vida del enemigo: " + currentEnemy.Health + "      ");
                         Console.WriteLine("      ╚══════════════════════════════════════════════════════════╝");
                         isDefending = true;
                     }
                     else {
-                        Console.WriteLine("\n\n\n═══════════════════════════𝐓𝐄 𝐓𝐎𝐂𝐀: 𝐃𝐄𝐅𝐄𝐍𝐃𝐄𝐑════════════════════════════");
+                        Console.WriteLine("\n\n\n\n═══════════════════════════𝐓𝐄 𝐓𝐎𝐂𝐀: 𝐃𝐄𝐅𝐄𝐍𝐃𝐄𝐑════════════════════════════");
                         Console.WriteLine("\n          Estas por recibir un ataque! Presiona para defenderte!\n");
                         Console.ReadKey();
                         combat.CalculateDeffense(mainCharacter.Armor, mainCharacter.Speed);
                         int damageRecieved = combat.CalculateDamage(currentEnemy.Dexterity, currentEnemy.Strength, currentEnemy.Level);
                         mainCharacter.Health -= damageRecieved;
                         if(!(mainCharacter.Health <= 0)) {
-                            Console.WriteLine("\n     ╔══════════════════════════════════════════════════════════╗");
+                            Console.WriteLine("\n\n     ╔══════════════════════════════════════════════════════════╗");
                             Console.WriteLine("                         Danio recibido: " + damageRecieved + "            ");
                             Console.WriteLine("                          Vida restante: " + mainCharacter.Health + "      ");
                             Console.WriteLine("     ╚══════════════════════════════════════════════════════════╝");
@@ -76,7 +77,7 @@ namespace GameManager {
                         isDefending = false;
                     }
                     if(currentEnemy.Health == 0) {
-                        Console.WriteLine("\n\n                               𝐕𝐈𝐂𝐓𝐎𝐑𝐈𝐀\n\n");
+                        Console.WriteLine("\n\n\n                               𝐕𝐈𝐂𝐓𝐎𝐑𝐈𝐀\n\n\n");
                         Console.WriteLine("RECOMPENSA: +50XP");
                         playerXP += 50;
                         if(playerXP == maxXP) {
@@ -84,6 +85,9 @@ namespace GameManager {
                             playerXP = 0;
                             maxXP += 50;
                             mainCharacter.Health += 20;
+                            if(mainCharacter.Health > maxPlayerHP) {
+                                mainCharacter.Health = maxPlayerHP;
+                            }
                             Console.WriteLine("\n\n     ╔══════════════════════════════════════════════════════════╗");
                             Console.WriteLine("                           𝐒𝐔𝐁𝐄𝐒 𝐃𝐄 𝐍𝐈𝐕𝐄𝐋!");
                             Console.WriteLine("                            𝐍𝐈𝐕𝐄𝐋 𝐀𝐂𝐓𝐔𝐀𝐋: " + mainCharacter.Level + "");
@@ -94,9 +98,11 @@ namespace GameManager {
                                 mainCharacter.Strength += 1;
                                 mainCharacter.Dexterity += 1;
                                 mainCharacter.Armor += 1;
+                                maxPlayerHP += 20;
+                                increaseEnemiesStats();
                             }
                         }
-                        Console.WriteLine("\n𝐏𝐑𝐄𝐒𝐈𝐎𝐍𝐀 𝐏𝐀𝐑𝐀 𝐂𝐎𝐍𝐓𝐈𝐍𝐔𝐀𝐑\n");
+                        Console.WriteLine("\n\n𝐏𝐑𝐄𝐒𝐈𝐎𝐍𝐀 𝐏𝐀𝐑𝐀 𝐂𝐎𝐍𝐓𝐈𝐍𝐔𝐀𝐑\n");
                         Console.ReadKey();
                         enemiesList.Remove(currentEnemy);           
                         inCombat = false;
@@ -105,18 +111,18 @@ namespace GameManager {
                 }
             }
             if(!enemiesList.Any()) {
-                Console.WriteLine("\n               𝐅𝐄𝐋𝐈𝐂𝐈𝐃𝐀𝐃𝐄𝐒! 𝐆𝐀𝐍𝐀𝐒𝐓𝐄! 𝐄𝐑𝐄𝐒 𝐃𝐈𝐆𝐍𝐎 𝐃𝐄 𝐒𝐄𝐑 𝐄𝐋𝐃𝐄𝐍 𝐋𝐎𝐑𝐃\n");
+                Console.WriteLine("\n\n               𝐅𝐄𝐋𝐈𝐂𝐈𝐃𝐀𝐃𝐄𝐒! 𝐆𝐀𝐍𝐀𝐒𝐓𝐄! 𝐄𝐑𝐄𝐒 𝐃𝐈𝐆𝐍𝐎 𝐃𝐄 𝐒𝐄𝐑 𝐄𝐋𝐃𝐄𝐍 𝐋𝐎𝐑𝐃\n");
                 Console.WriteLine("\n                                    STATS FINALES\n");
                 entitiesSerializer.ReadFile<CharacterType>(entitiesSerializer.SerializedCharacter);
             }
             else {
-                Console.WriteLine("\n                                       𝐏𝐄𝐑𝐃𝐈𝐒𝐓𝐄\n");
+                Console.WriteLine("\n\n                                       𝐏𝐄𝐑𝐃𝐈𝐒𝐓𝐄\n\n");
                 Console.WriteLine("\n                 Put these foolish ambitions to rest. STATS FINALES\n");
                 entitiesSerializer.ReadFile<CharacterType>(entitiesSerializer.SerializedCharacter);
             }
         }
 
-        private void HandleGameStart() {
+        private void handleGameStart() {
             CharacterType[] classes = Enum.GetValues<CharacterType>();
             int validClass, validAge;
             DateTime validBirthDate;
@@ -165,7 +171,7 @@ namespace GameManager {
             entitiesSerializer.ReadFile<CharacterType>(entitiesSerializer.SerializedCharacter);
         }
 
-        private void CreateEnemies() {
+        private void createEnemies() {
             const int MAX_CHARACTERS = 10;
             if(!File.Exists(entitiesSerializer.EnemiesFileName)) {
                 for (int i = 0; i < MAX_CHARACTERS; i++) {
@@ -177,6 +183,15 @@ namespace GameManager {
                 entitiesSerializer.CreateEnemiesFile(enemiesList);
             }
             //entitiesSerializer.ReadFile<EnemyType>(entitiesSerializer.SerializedEnemies);
+        }
+
+        private void increaseEnemiesStats() {
+            foreach(Character<EnemyType> enemy in enemiesList) {
+                enemy.Armor += 1;
+                enemy.Dexterity += 1;
+                enemy.Speed += 1;
+                enemy.Strength += 1;
+            }
         }
     }
 }
