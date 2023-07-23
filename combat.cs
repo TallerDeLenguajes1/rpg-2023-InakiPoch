@@ -24,7 +24,7 @@ namespace GameManager {
         public int CalculateDamage(int dex, int strength, int level) { 
             attackPower = dex * strength * level;
             criticalStrike = (new Random()).Next(1, MAX_CRITICAL_STRIKE);
-            Console.WriteLine(attackPower + "\n" + criticalStrike + "\n" + defensePower);
+            // Console.WriteLine(attackPower + "\n" + criticalStrike + "\n" + defensePower);
             return (int)((attackPower * criticalStrike) - defensePower) / ATTACK_ADJUST; 
         }
 

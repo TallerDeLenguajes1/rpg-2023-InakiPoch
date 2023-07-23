@@ -54,6 +54,9 @@ namespace GameManager {
                         Console.WriteLine("                          Danio Otorgado: " + damageDealt + "            ");
                         Console.WriteLine("                         Vida del enemigo: " + currentEnemy.Health + "      ");
                         Console.WriteLine("      ╚══════════════════════════════════════════════════════════╝");
+                        if(damageDealt == 0) { 
+                            Console.WriteLine("\n\nEl enemigo esquivo el ataque!\n\n");
+                        }
                         isDefending = true;
                     }
                     else {
@@ -68,6 +71,9 @@ namespace GameManager {
                             Console.WriteLine("                         Danio recibido: " + damageRecieved + "            ");
                             Console.WriteLine("                          Vida restante: " + mainCharacter.Health + "      ");
                             Console.WriteLine("     ╚══════════════════════════════════════════════════════════╝");
+                            if(damageRecieved == 0) { 
+                            Console.WriteLine("\n\nEnhorabuena! Esquivaste el ataque!\n\n");
+                            }
                         }
                         else {
                             mainCharacter.Health = 0;
@@ -92,8 +98,9 @@ namespace GameManager {
                             Console.WriteLine("                           𝐒𝐔𝐁𝐄𝐒 𝐃𝐄 𝐍𝐈𝐕𝐄𝐋!");
                             Console.WriteLine("                            𝐍𝐈𝐕𝐄𝐋 𝐀𝐂𝐓𝐔𝐀𝐋: " + mainCharacter.Level + "");
                             Console.WriteLine("     ╚══════════════════════════════════════════════════════════╝");
+                            Console.WriteLine("\n\nGracias a ello, te curaste un poco de vida\n\n");
                             if(mainCharacter.Level % 3 == 0) {
-                                Console.WriteLine("\nTus habilidades fueron mejoradas!\n");
+                                Console.WriteLine("\n\nTus habilidades fueron mejoradas! Eso significa enemigos mas fuertes...\n\n");
                                 mainCharacter.Speed += 1;
                                 mainCharacter.Strength += 1;
                                 mainCharacter.Dexterity += 1;
