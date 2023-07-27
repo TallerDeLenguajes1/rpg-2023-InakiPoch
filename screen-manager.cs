@@ -6,6 +6,7 @@ namespace ScreenManager {
         static string folderPath = "screen-files/";
         static string titleScreen = folderPath + "title-screen.txt";
         static string classesScreen = folderPath + "select-class.txt";
+        static string stormveilScreen = folderPath + "stormveil-text.txt";
         static ExceptionHandler newException = new ExceptionHandler();
 
         private void readfile(string fileName) {
@@ -24,5 +25,6 @@ namespace ScreenManager {
         public void TitleScreen() { readfile(titleScreen); }
         public void SelectClass() { readfile(classesScreen); }
         public void CombatScreen(string currentEnemy) { readfile(folderPath + currentEnemy); }
+        public void StormveilScreen() { readfile(stormveilScreen); }
     }
 }

@@ -29,7 +29,13 @@ namespace GameManager {
         }
         public void StartGame() {
             handleGameStart();
+            Console.WriteLine("\nPresiona una tecla para confirmar datos\n");
             Console.ReadKey();
+            Console.WriteLine("\n                                                                   𝐑𝐢𝐬𝐞, 𝐓𝐚𝐫𝐧𝐢𝐬𝐡𝐞𝐝...\n\n");
+            Console.WriteLine("\nLa reina Marika rompio el Elden Ring, trayendo caos y descontrol a las Lands Between. Recibes el llamado de la Gran Orden, hacia el simbolico Erdtree, para restaurar el orden, reparar el Elden Ring, y reclamar tu titulo como Elden Lord\n");
+            Console.WriteLine("\n\nPresiona para empezar\n\n");
+            Console.ReadKey();
+            screenHandler.StormveilScreen();
             while(!playerDefeated && !(mainCharacter == null) && enemiesList.Any()) {
                 Character<EnemyType> currentEnemy = enemiesList[(new Random()).Next(enemiesList.Count)];
                 combat = new Combat(currentEnemy);
@@ -72,7 +78,7 @@ namespace GameManager {
                             Console.WriteLine("                          Vida restante: " + mainCharacter.Health + "      ");
                             Console.WriteLine("     ╚══════════════════════════════════════════════════════════╝");
                             if(damageRecieved == 0) { 
-                            Console.WriteLine("\n\nEnhorabuena! Esquivaste el ataque!\n\n");
+                            Console.WriteLine("\n\nEnhorabuena! Esquivaste el ataque!");
                             }
                         }
                         else {
@@ -98,7 +104,7 @@ namespace GameManager {
                             Console.WriteLine("                           𝐒𝐔𝐁𝐄𝐒 𝐃𝐄 𝐍𝐈𝐕𝐄𝐋!");
                             Console.WriteLine("                            𝐍𝐈𝐕𝐄𝐋 𝐀𝐂𝐓𝐔𝐀𝐋: " + mainCharacter.Level + "");
                             Console.WriteLine("     ╚══════════════════════════════════════════════════════════╝");
-                            Console.WriteLine("\n\nGracias a ello, te curaste un poco de vida\n\n");
+                            Console.WriteLine("\n\nGracias a ello, te curaste un poco de vida");
                             if(mainCharacter.Level % 3 == 0) {
                                 Console.WriteLine("\n\nTus habilidades fueron mejoradas! Eso significa enemigos mas fuertes...\n\n");
                                 mainCharacter.Speed += 1;
@@ -175,6 +181,7 @@ namespace GameManager {
             if(!File.Exists(entitiesSerializer.CharacterFileName)) {
                 entitiesSerializer.CreateCharacterFile(new List<Character<CharacterType>> { mainCharacter } );
             }
+            Console.WriteLine("\n");
             entitiesSerializer.ReadFile<CharacterType>(entitiesSerializer.SerializedCharacter);
         }
 

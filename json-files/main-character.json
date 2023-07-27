@@ -1,15 +1,15 @@
 [
   {
     "Type": 2,
-    "Name": "fsfs",
-    "Nickname": "fewfw",
-    "BirthDate": "1967-01-23T00:00:00",
-    "Age": 56,
-    "Speed": 10,
-    "Dexterity": 3,
-    "Strength": 6,
-    "Level": 3,
-    "Armor": 5,
-    "Health": 27
+    "Name": "frf",
+    "Nickname": "wefw",
+    "BirthDate": "1990-01-23T00:00:00",
+    "Age": 33,
+    "Speed": 9,
+    "Dexterity": 2,
+    "Strength": 5,
+    "Level": 2,
+    "Armor": 4,
+    "Health": 21
   }
 ]
