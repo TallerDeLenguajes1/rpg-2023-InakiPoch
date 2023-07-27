@@ -2,6 +2,7 @@ using Entity;
 using Serializer;
 using ScreenManager;
 using ExceptionsHandler;
+using Api;
 
 namespace GameManager { 
     public class Game {
@@ -12,7 +13,9 @@ namespace GameManager {
         static Screen screenHandler = new Screen();
         static int playerXP;
         static int maxXP;
+        static int runeArcCooldown;
         static int maxPlayerHP = 100;
+        static bool runeArcActivated;
         static bool playerDefeated;
         static bool isDefending;
         static bool inCombat;
@@ -24,7 +27,9 @@ namespace GameManager {
             playerDefeated = false;
             isDefending = false;
             inCombat = false;
+            runeArcActivated = false;
             playerXP = 0;
+            runeArcCooldown = 1;
             maxXP = 50;
         }
         public void StartGame() {
@@ -92,6 +97,28 @@ namespace GameManager {
                         Console.WriteLine("\n\n\n                               𝐕𝐈𝐂𝐓𝐎𝐑𝐈𝐀\n\n\n");
                         Console.WriteLine("RECOMPENSA: +50XP");
                         playerXP += 50;
+                        if(runeArcActivated) {
+                            if(!(runeArcCooldown == 0)) {
+                                runeArcCooldown -= 1;
+                            }
+                            else {
+                                Console.WriteLine("\n\nSe agoto tu RuneArc!\n\n");
+                                mainCharacter.Speed -= 2;
+                                mainCharacter.Strength -= 2;
+                                mainCharacter.Dexterity -= 2;
+                                mainCharacter.Armor -= 2;
+                                runeArcActivated = false;
+                            }
+                        }
+                        if((int)RuneArc.RuneArcProbability() % (new Random()).Next(1, 10) == 0 && !runeArcActivated) {
+                            Console.WriteLine("\n\nEncontraste y activaste un RunArc! Tus habilidades se mejoraron momentaneamentes\n\n");
+                            mainCharacter.Speed += 2;
+                            mainCharacter.Strength += 2;
+                            mainCharacter.Dexterity += 2;
+                            mainCharacter.Armor += 2;
+                            runeArcActivated = true;
+                            runeArcCooldown = 1;
+                        }
                         if(playerXP == maxXP) {
                             mainCharacter.Level++;
                             playerXP = 0;
@@ -106,11 +133,7 @@ namespace GameManager {
                             Console.WriteLine("     ╚══════════════════════════════════════════════════════════╝");
                             Console.WriteLine("\n\nGracias a ello, te curaste un poco de vida");
                             if(mainCharacter.Level % 3 == 0) {
-                                Console.WriteLine("\n\nTus habilidades fueron mejoradas! Eso significa enemigos mas fuertes...\n\n");
-                                mainCharacter.Speed += 1;
-                                mainCharacter.Strength += 1;
-                                mainCharacter.Dexterity += 1;
-                                mainCharacter.Armor += 1;
+                                Console.WriteLine("\n\nTus habilidades mejoraron permanentemente! Tambien la de los enemigos...\n\n");
                                 maxPlayerHP += 20;
                                 increaseEnemiesStats();
                             }
