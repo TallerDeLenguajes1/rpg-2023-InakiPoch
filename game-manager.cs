@@ -50,6 +50,7 @@ namespace GameManager {
                 Console.WriteLine("                   𝐀𝐆𝐑𝐄𝐃𝐈𝐃𝐎 𝐏𝐎𝐑: " + currentEnemy.Name + "       ");
                 Console.WriteLine("                 𝐕𝐈𝐃𝐀 𝐃𝐄𝐋 𝐄𝐍𝐄𝐌𝐈𝐆𝐎: " + currentEnemy.Health + "     ");
                 Console.WriteLine("\n╚══════════════════════════════════════════════════════════╝");
+                isDefending = false;
                 while(inCombat) {
                     if(!isDefending) {
                         Console.WriteLine("\n\n\n\n════════════════════════════𝐓𝐄 𝐓𝐎𝐂𝐀: 𝐀𝐓𝐀𝐂𝐀𝐑════════════════════════════");
@@ -87,6 +88,7 @@ namespace GameManager {
                             }
                         }
                         else {
+                            Console.WriteLine("\n\nDanio critico recibido...\n\n");
                             mainCharacter.Health = 0;
                             playerDefeated = true;
                             break;  
@@ -111,7 +113,7 @@ namespace GameManager {
                             }
                         }
                         if((int)RuneArc.RuneArcProbability() % (new Random()).Next(1, 10) == 0 && !runeArcActivated) {
-                            Console.WriteLine("\n\nEncontraste y activaste un RunArc! Tus habilidades se mejoraron momentaneamentes\n\n");
+                            Console.WriteLine("\n\nEncontraste y activaste un RunArc! Tus habilidades se mejoraron momentaneamente\n\n");
                             mainCharacter.Speed += 2;
                             mainCharacter.Strength += 2;
                             mainCharacter.Dexterity += 2;
